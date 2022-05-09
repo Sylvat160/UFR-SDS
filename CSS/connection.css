@@ -1,0 +1,144 @@
+body {
+    overflow: hidden;
+    background-image: url(../Images/mol.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo {
+    position: relative;
+    right: 550px;
+}
+.formulaire{
+    position: relative;
+    bottom: 50px;
+}
+.formulaire h1 {
+    position: relative;
+    bottom: 30px;
+    left: 150px;
+}
+
+form p input {
+    width: 350px;
+    height: 75px;
+    border-radius: 50px;
+    background-color: #476468;
+
+}
+
+form .entre1 input {
+    position: relative;
+    bottom: 45px;
+    right: 50px;
+    z-index: -1;
+    padding-left: 70px;
+    color: #fff;
+}
+
+
+input::placeholder {
+    font-size: 1.2rem;
+    position: relative;
+    color: #fff;
+    opacity: 0.5;
+}
+
+form .entre2 input {
+    position: relative;
+    bottom: 45px;
+    right: -50px;
+    z-index: 0;
+    padding-left: 70px;
+    color: #fff;
+
+}
+
+form .entre2 {
+    position: relative;
+    right: 50px;
+}
+form .entre2 label img {
+   transform: scale3d(1, 1, 1);
+   
+}
+
+form .envoi input {
+    background-color: #fff;
+    border: 1px solid rgb(0, 0, 0);
+    width: 400px;
+    font-size: 1.2rem;
+    position: relative;
+    left: 20px;
+}
+
+form .envoi input:hover {
+    background-color: #476468;
+    color: #fff;
+    transition: 0.5s;
+    transform: scale(1.1);
+}
+
+.footer {
+    position: relative;
+    right: 40%;
+    bottom: 20px;
+}
+
+
+
+
+
+@media screen and (max-width: 679px) {
+
+    .logo {
+        right: 100px;
+    }
+    .logo img {
+        width: 100px;
+    }
+    .formulaire{
+        position: relative;
+        bottom: 0;
+    }
+    .formulaire h1 {
+        position: relative;
+        bottom: 0;
+        left: 100px;
+    }
+
+    form p input {
+        width: 55%;
+        height: 55px;
+        border-radius: 50px;
+        background-color: #476468;
+        
+    
+    }
+    form p label img {
+        width: 90px;
+    }
+
+    form .entre1 input {
+        position: relative;
+        bottom: 45px;
+        right: 50px;
+        z-index: -1;
+        padding-left: 70px;
+        color: #fff;
+    }
+    
+}
+
+@media screen and (min-width: 680px) and (max-width: 1279px) {
+    .logo {
+        right: 300px;
+    }
+    
+}
