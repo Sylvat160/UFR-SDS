@@ -122,12 +122,12 @@ body {
 }
 .footer svg {
     position: relative;
-    right: 90%;
+    right: 80%;
 }
 
 .footer p {
     position: relative;
-    left: 90%;
+    left: 80%;
     font-size: 1.5rem;
 }
 
@@ -349,14 +349,16 @@ body {
      border-radius: 20px;
  }
 
-#acceuil .parttwo {
+#acceuil .parttwo , .parttree {
         width: 27rem;
         height: 32rem;
         backdrop-filter: blur(10px) !important;
        border-radius: 20px;
        border: 1px solid rgba(14, 13, 13, 0.397);
+       display: none;
       
  }
+
 
  .partone h1 {
      padding-top: 10px;
@@ -375,7 +377,7 @@ body {
     transform: translate(200px) !important;
  }
 
- .parttwo section form {
+ .parttwo section form , #formT{
      display: flex !important;
         justify-content: center !important;
         align-items: center !important;
@@ -385,7 +387,7 @@ body {
  }
 
 
- #formE div {
+ #formE div , #formT div {
     width: 230px;
    height: 40px;
    border-radius: 20px;
@@ -396,23 +398,26 @@ body {
    display: flex !important;
    align-items: center;
 }
-#formE div label  {
+#formT div , #formT button  {
+    position: relative;
+    top:80px;
+}
+#formE div label , #formT div label {
     padding-left: 10px;
 }
-#formE div input {
+#formE div input , #formT div input {
     width: 190px;
    height: 40px;
    border: none;
     border-radius: 20px;
    background: none;
-   /* padding-left: 40px; */
    color: #fff;
    font-size: medium;
    position: relative;
    left: 15px;
 }
 
- #formE div input::placeholder {
+ #formE div input::placeholder , #formT div input::placeholder {
     font-size: 1rem;
     color: #fff;
     opacity: 0.7;
@@ -420,7 +425,7 @@ body {
  }
 
  
-#formE button {
+#formE button , #formT button { 
     background: none;
     border: 1px solid rgb(0, 0, 0);
     width: 120px;
@@ -434,11 +439,11 @@ body {
     cursor: pointer;
 }
 
-#formE button:hover {
+#formE button:hover , #formT button:hover {
     
     color: #fff;
 }
-#formE button::before {
+#formE button::before , #formT button::before {
     content: '';
     width: 0;
     height: 30px;
@@ -453,7 +458,7 @@ body {
     
 }
 
-#formE button:hover::before {
+#formE button:hover::before , #formT button:hover::before {
     width: 115px;
 }
 
@@ -466,4 +471,39 @@ body {
     background: none !important;
     border: none !important;
     
+}
+
+
+
+
+
+#myTable  thead tr th {
+    width: 150px;
+}
+
+#myTable tbody tr  {
+    backdrop-filter: blur(10px) !important;
+    background: #306fa600 !important;
+}
+
+.llink1 , .llink2 , .llink3 {
+    text-decoration: none !important;
+
+}
+
+.llink1 {
+    color:black !important;
+    font-size: 1rem;
+}
+.llink2 {
+    color:rgb(68, 65, 218) !important;
+    font-size: 1rem;
+    position: relative !important;
+    right: 10px !important;
+}
+.llink3 {
+    color:rgb(253, 0, 0) !important;
+    font-size: 1rem;
+    position: relative !important;
+    right: 20px !important;
 }

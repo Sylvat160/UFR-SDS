@@ -45,6 +45,37 @@
     <p>&copy tout droit reservé</p>
     </div>
 
+
+    <?php
+        try {
+            $bdd = new PDO('mysql:host=localhost;dbname=ufr_sds;', 'root', '');
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+
+        if (isset($_POST['submit'])) {
+            $login = htmlspecialchars($_POST['login']);
+            $password = md5($_POST['password']);
+
+            $req = $bdd->prepare('SELECT * FROM admin WHERE email = :login AND mot_de_passe = :password');
+            $req->execute(array(
+                'login' => $login,
+                'password' => $password
+            ));
+
+            $resultat = $req->fetch();
+
+            if ($resultat) {
+                session_start();
+                $_SESSION['login'] = $login;
+                $_SESSION['password'] = $password;
+                header('Location: ../Pages/acceuil.php');
+            } else {
+                echo '<p class="erreur">Login ou mot de passe incorrect</p>';
+            }
+        }
+    ?>
+
     
 </body>
 

@@ -22,30 +22,30 @@
             <div class="troisp">
                 <p class="entre1">
                     <label for="nomA"><img src="../Images/Groupe 8.png" alt="" width="100px"></label>
-                    <input type="text" name="nomA" id="nomA" placeholder="Nom">
+                    <input type="text" name="nomA" id="nomA" placeholder="Nom" require>
                 </p>
 
                 <p class="entre2">
-                    <input type="text" name="prenomA" id="prenomA" placeholder="Prenom (s)">
+                    <input type="text" name="prenomA" id="prenomA" placeholder="Prenom (s)" require>
                     <label class="centre" for="prenomA"><img src="../Images/Groupe9.png" alt="" width="100px"></label>
                 </p>
 
                 <p class="entre1">
-                    <label for="naissA"><img src="../Images/Groupe 8.png" alt="" width="100px"></label>
-                    <input type="text" name="naissA" id="naissA" placeholder="Date de naissance">
+                    <label for="emailA"><img src="../Images/Groupe 8.png" alt="" width="100px"></label>
+                    <input type="mail" name="emailA" id="emailA" placeholder="Email" require>
                 </p>
             </div>
             <div class="deuxd">
                 
 
                 <p class="entre2">
-                    <input type="password" name="passwordA" id="passwordA" placeholder="Entrez un mot de passe">
+                    <input type="password" name="passwordA" id="passwordA" placeholder="Entrez un mot de passe" require>
                     <label class="centre" for="passwordA"><img src="../Images/Groupe9.png" alt="" width="100px"></label>
                 </p>
 
                 <p class="entre1">
                     <label for="cpassA"><img src="../Images/Groupe 8.png" alt="" width="100px"></label>
-                    <input type="password" name="cpassA" id="cpassA" placeholder="Confirmez votre mot de passe">
+                    <input type="password" name="cpassA" id="cpassA" placeholder="Confirmez votre mot de passe" require>
                 </p>
             </div>
 
@@ -65,6 +65,42 @@
 
         <p>&copy tout droit reservé</p>
     </div>
+
+
+
+    <?php
+        try {
+            $bdd = new PDO('mysql:host=localhost;dbname=ufr_sds', 'root', '');
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+
+        if(isset($_POST['submit'])){
+            $nomA = htmlentities($_POST['nomA']);
+            $prenomA = htmlspecialchars($_POST['prenomA']);
+            $emailA = htmlspecialchars($_POST['emailA']);
+            $passwordA = md5($_POST['passwordA']);
+            $cpassA = md5($_POST['cpassA']);
+
+            if(!empty($nomA) AND !empty($prenomA) AND !empty($emailA) AND !empty($passwordA) AND !empty($cpassA)){
+                if($passwordA == $cpassA){
+                    $req = $bdd->prepare('INSERT INTO admin (nom, prenom, email, mot_de_passe) VALUES(:nomA, :prenomA, :emailA, :passwordA)');
+                    $req->execute(array(
+                        'nomA' => $nomA,
+                        'prenomA' => $prenomA,
+                        'emailA' => $emailA,
+                        'passwordA' => $passwordA
+                    ));
+                    echo '<script>alert("Vous etes bien inscrit")</script>';
+                    echo '<script>window.location.href="connection.php"</script>';
+                }else{
+                    echo '<script>alert("Veuillez verifier votre mot de passe")</script>';
+                }
+            }else{
+                echo '<script>alert("Veuillez remplir tous les champs")</script>';
+            }
+        }
+    ?>
 
 
 </body>
