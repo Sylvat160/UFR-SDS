@@ -36,6 +36,12 @@
 
     </div>
 
+    <?php
+    if (isset($_GET['success'])) {
+        echo '<div id="alert" class="alert alert-success" role="alert">' . $_GET['success'] . '</div>';
+    }
+    ?>
+
 
     <table class="table table-borderless" id="myTable">
         <thead>
@@ -77,8 +83,8 @@
                     <td>
                         <?php
                             echo "<a class=\"llink1 btn\" href='voir.php'><i class='fas fa-eye'></i></a>";
-                            echo "<a class=\"llink2 btn\" href='#'><i class='fas fa-edit'></i></a>";
-                            echo "<a class=\"llink3 btn\" href='#'><i class='fas fa-trash'></i></a>";
+                            echo "<a class=\"llink2 btn\" href='modifier.php?modif=$donnees[numero_e]'><i class='fas fa-edit'></i></a>";
+                            echo "<a class=\"llink3 btn\" href='suppression.php?id=$donnees[numero_e]'><i class='fas fa-trash'></i></a>";
                         ?>
                        
 
@@ -135,6 +141,11 @@
     </script>
 
     <script>
+
+        $('#alert').delay(3000).fadeOut('slow');
+
+        var alert = document.getElementById('alert');
+        alert.addEventListener('setTimeout', )
        
         // var id = document.getElementsByClassName('llink1');
         // for (var i = 0; i < id.length; i++) {
