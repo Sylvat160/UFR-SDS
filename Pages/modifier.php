@@ -90,14 +90,11 @@
 
     <?php
     if (isset($_POST['modifier'])) {
-        $nom = $_POST['nomE'];
-        $prenom = $_POST['prenomE'];
-        $date = $_POST['dateE'];
+       
         $mail = $_POST['mailE'];
         $numero = $_POST['numeroE'];
-        $tuteur = $_POST['tuteur'];
 
-        $req = $bdd->query("UPDATE etudiants SET nom = '$nom', prenom = '$prenom', daten_e = '$date', email_e = '$mail', numero_e = '$numero', numero_tuteur = '$tuteur' WHERE numero_e = '$id'");
+        $req = $bdd->query("UPDATE etudiants SET  email_e = '$mail', numero_e = '$numero' WHERE numero_e = '$id'");
         $success = "L'étudiant a été modifié avec succès";
         header('Location: liste.php?success='.$success);
     }
