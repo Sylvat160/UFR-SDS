@@ -28,24 +28,23 @@
         $id = $_GET['modif'];
         $req = $bdd->query("SELECT * FROM etudiants WHERE numero_e = '$id'");
         $donnees = $req->fetch();
-    }
     ?>
     <div class="parttwo" id="modif">
         <form action="" method="POST" id="formE">
 
             <div>
                 <label for="nomE"><i class="fa-solid fa-user"></i></label>
-                <input type="text" name="nomE" value="<?php echo $donnees['nom'] ?>" placeholder="Nom">
+                <input type="text" name="nomE" value="<?php echo $donnees['nom'] ?>" disabled >
             </div>
 
             <div>
                 <label for="prenomE"><i class="fa-solid fa-user"></i></label>
-                <input type="text" name="prenomE" value="<?php echo $donnees['prenom'] ?>" placeholder="Prenom">
+                <input type="text" name="prenomE" value="<?php echo $donnees['prenom'] ?>" disabled>
             </div>
 
             <div>
                 <label for="dateE"><i class="fa-regular fa-calendar"></i></label>
-                <input type="date" value="<?php echo $donnees['daten_e'] ?>" name="dateE" placeholder="Date de naissance">
+                <input type="text" value="<?php echo $donnees['daten_e'] ?>" name="dateE" >
             </div>
 
             <div>
@@ -59,7 +58,7 @@
             </div>
 
             <div class="tuteur">
-                <select name="tuteur" id="">
+                <select disabled name="tuteur" id="">
                     <option value=""><?php $join = $bdd->query("SELECT * FROM etudiants INNER JOIN tuteurs ON numero_tuteur = numero_t ");
                                         $result = $join->fetch();
                                         // print_r($result);
@@ -83,6 +82,11 @@
 
         </form>
     </div>
+
+
+    <?php
+    }
+    ?> 
 
     <?php
     if (isset($_POST['modifier'])) {

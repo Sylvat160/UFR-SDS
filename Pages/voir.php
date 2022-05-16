@@ -62,7 +62,7 @@
             }
 
             $i = 0;
-            $req = $bdd->query("SELECT * FROM etudiants");
+            $req = $bdd->query("SELECT * FROM etudiants ");
 
             while ($donnees = $req->fetch()) {
                 $i++;
@@ -76,17 +76,17 @@
                     <td><?php echo $donnees['email_e']; ?></td>
                     <td><?php echo $donnees['numero_e']; ?></td>
                     <td>
-                        
+
                         <?php
-                       
-                        $req1 = $bdd->query("SELECT * FROM tuteurs ");
+
+                        $req1 = $bdd->query("SELECT * FROM tuteurs WHERE numero_t = '$donnees[numero_tuteur]'");
                         $donnees1 = $req1->fetch();
                         echo $donnees1['nom'] . " " . $donnees1['prenom'];
-                            
+
                         ?>
 
 
-                        
+
 
 
 
@@ -118,6 +118,30 @@
 
 
     <script src="../JS/bootstrap.bundle.min.js"></script>
+    <script src="../Font-Awesome-6.x/js/all.min.js"></script>
+    <script src="../JS/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
+
+    <script>
+
+        $('#alert').delay(3000).fadeOut('slow');
+
+        var alert = document.getElementById('alert');
+        alert.addEventListener('setTimeout', )
+       
+        // var id = document.getElementsByClassName('llink1');
+        // for (var i = 0; i < id.length; i++) {
+        //     id[i].addEventListener('click', function() {
+        //         var id = this.getAttribute('id');
+        //         alert("nom : " + $donnees['nom']);
+        //     } , false);
+        // }
+    </script>
 </body>
 
 </html>
