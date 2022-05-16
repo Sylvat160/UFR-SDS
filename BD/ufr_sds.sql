@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 15 mai 2022 à 15:07
+-- Généré le : lun. 16 mai 2022 à 17:42
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -35,14 +35,15 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `email` varchar(255) DEFAULT NULL,
   `mot_de_passe` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `admin`
 --
 
 INSERT INTO `admin` (`id`, `nom`, `prenom`, `email`, `mot_de_passe`) VALUES
-(1, 'TAGNABOU', 'Sylvain', 'sylvat160@gmail.com', 'e10adc3949ba59abbe56e057f20f883e');
+(1, 'TAGNABOU', 'Sylvain', 'sylvat160@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(2, 'WETTA', 'Hamy', 'hany@gmail.com', 'e10adc3949ba59abbe56e057f20f883e');
 
 -- --------------------------------------------------------
 
@@ -59,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `etudiants` (
   `numero_e` varchar(20) NOT NULL,
   `numero_tuteur` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`numero_e`),
-  KEY `numero_tuteur` (`numero_tuteur`)
+  KEY `etudiants_ibfk_1` (`numero_tuteur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -67,7 +68,8 @@ CREATE TABLE IF NOT EXISTS `etudiants` (
 --
 
 INSERT INTO `etudiants` (`nom`, `prenom`, `daten_e`, `email_e`, `numero_e`, `numero_tuteur`) VALUES
-('aphro', 'CG', '2000-05-12 00:00:00', 'aphro@gmail.com', '45578521', '8784965');
+('Bako', 'Fatah', '2022-05-02 00:00:00', 'fatah@gmail.com', '4400440', '5482311'),
+('aphro', 'CG', '2000-05-12 00:00:00', 'aphro@gmail.com', '5585848', '8784965');
 
 -- --------------------------------------------------------
 
@@ -88,6 +90,8 @@ CREATE TABLE IF NOT EXISTS `tuteurs` (
 --
 
 INSERT INTO `tuteurs` (`nom`, `prenom`, `numero_t`) VALUES
+('wwww', 'wwwq', '254145'),
+('WETTA', 'Hany', '5482311'),
 ('lllll', 'aaaaa', '8784965'),
 ('Bourei', 'Namou', '8965212');
 
@@ -99,7 +103,7 @@ INSERT INTO `tuteurs` (`nom`, `prenom`, `numero_t`) VALUES
 -- Contraintes pour la table `etudiants`
 --
 ALTER TABLE `etudiants`
-  ADD CONSTRAINT `etudiants_ibfk_1` FOREIGN KEY (`numero_tuteur`) REFERENCES `tuteurs` (`numero_t`);
+  ADD CONSTRAINT `etudiants_ibfk_1` FOREIGN KEY (`numero_tuteur`) REFERENCES `tuteurs` (`numero_t`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
